@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pendaftaran Perguruan Tinggi</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header{
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header img{
+            width: 120px;
+            height: 120px;
+            margin-bottom: 10px;
+        }
+
+        nav{
+            background-color: #0055aa;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        .container{
+            width: 50%;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align: center;
+            color: #003366;
+        }
+
+        label{
+            font-weight: bold;
+        }
+
+        input, select{
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #0055aa;
+        }
+
+        #hasil{
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6f2ff;
+            border-left: 5px solid #003366;
+            display: none;
+        }
+
+        footer{
+            text-align: center;
+            background-color: #003366;
+            color: white;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <!-- TAMBAHKAN LOGO -->
+        <img src="logo-unitama-512-512.png" alt="Logo Kampus">
+
+        <h1>Aplikasi Pendaftaran Perguruan Tinggi</h1>
+
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Pendaftaran</a>
+        <a href="#">Jurusan</a>
+        <a href="#">Login</a>
+    </nav>
+
+    <div class="container">
+
+        <h2>Form Pendaftaran Mahasiswa Baru</h2>
+
+        <!-- FORM -->
+        <form onsubmit="daftarMahasiswa(event)">
+
+            <label>Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Masukkan Nama Lengkap">
+
+            <label>NISN</label>
+            <input type="text" id="nisn" placeholder="Masukkan NISN">
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Masukkan Email">
+
+            <label>Pilihan Jurusan</label>
+            <select id="jurusan">
+
+                <option>Sistem Informasi</option>
+                <option>Teknik Informatika</option>
+                <option>Manajemen</option>
+                <option>Akuntansi</option>
+
+            </select>
+
+            <button type="submit">
+                DAFTAR
+            </button>
+
+        </form>
+
+        <!-- HASIL -->
+        <div id="hasil"></div>
+
+    </div>
+
+    <footer>
+        © 2026 Pendaftaran Perguruan Tinggi
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function daftarMahasiswa(event){
+
+            event.preventDefault();
+
+            let nama = document.getElementById("nama").value;
+            let nisn = document.getElementById("nisn").value;
+            let email = document.getElementById("email").value;
+            let jurusan = document.getElementById("jurusan").value;
+
+            if(nama == "" || nisn == "" || email == ""){
+
+                alert("Data belum lengkap!");
+
+            }else{
+
+                // tampil hasil
+                let hasil = document.getElementById("hasil");
+
+                hasil.style.display = "block";
+
+                hasil.innerHTML = `
+
+                    <h3>Pendaftaran Berhasil!</h3>
+
+                    <p><b>Nama:</b> ${nama}</p>
+
+                    <p><b>NISN:</b> ${nisn}</p>
+
+                    <p><b>Email:</b> ${email}</p>
+
+                    <p><b>Jurusan:</b> ${jurusan}</p>
+
+                `;
+
+                // popup alert
+                alert("Selamat " + nama + ", pendaftaran berhasil!");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
